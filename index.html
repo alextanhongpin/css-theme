@@ -11,7 +11,13 @@
         padding: 0;
         box-sizing: border-box;
       }
+
+      :root {
+        --blue: #4488ff;
+      }
+
       body {
+      	--primaryColor: var(--blue, #4488ff);
         display: grid;
         grid-template:
           "header" 80px
@@ -19,10 +25,6 @@
           "main" 1fr
           "footer" 80px/ 1fr;
         min-height: 100vh;
-      }
-
-      :root {
-        --primaryColor: #4488ff;
       }
 
       header {
@@ -68,7 +70,7 @@
       const $colorInput = document.getElementById("color");
       $colorInput.addEventListener("change", evt => {
         const color = evt.currentTarget.value;
-        root.style.setProperty("--primaryColor", color);
+        root.style.setProperty("--blue", color);
       });
     </script>
   </body>
