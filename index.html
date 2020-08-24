@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS Theme</title>
+    <style>
+      /* Poor man's CSS reset. */
+      *,
+      *:before,
+      *:after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        grid-template:
+          "header" 80px
+          "navbar" 40px
+          "main" 1fr
+          "footer" 80px/ 1fr;
+        min-height: 100vh;
+      }
+
+      :root {
+        --primaryColor: #4488ff;
+      }
+
+      header {
+        background: var(--primaryColor);
+        grid-area: header;
+      }
+
+      navbar {
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
+          )
+          var(--primaryColor);
+        grid-area: navbar;
+      }
+
+      p {
+        grid-area: main;
+      }
+
+      footer {
+        background: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.2)
+          )
+          var(--primaryColor);
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <navbar></navbar>
+    <p>Change the color: <input type="color" id="color" /></p>
+    <footer></footer>
+
+    <script>
+      "use strict";
+
+      const root = document.documentElement;
+      const $colorInput = document.getElementById("color");
+      $colorInput.addEventListener("change", evt => {
+        const color = evt.currentTarget.value;
+        root.style.setProperty("--primaryColor", color);
+      });
+    </script>
+  </body>
+</html>
